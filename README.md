@@ -4,7 +4,7 @@ Pleiades Hierarchical
 Code and data for generating static, browsable, hierarchical representations of [Pleiades](http://pleiades.stoa.org/) places.
 
 TODO:
-  * Hierarchy of connections
+  * Hierarchy of connections (connectsWith parents, hasConnectionsWith children)
   * Geographical relationship hierarchy
   * Browse by [BAtlas Capgrid](http://atlantides.org/capgrids/)
 
