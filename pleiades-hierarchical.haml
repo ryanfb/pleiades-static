@@ -1,0 +1,11 @@
+!!! 5
+%html{:lang => 'en'}
+  %head
+    %meta{:charset => 'utf-8'}
+    %title Pleiades Hierarchical
+  %body
+    %h1 Pleiades Hierarchical
+    - places.sort_by {|k,v| v["children"].nil? ? 0 : v["children"]}.reverse.to_h.each do |k,v|
+      - if places[k]["rootNode"] == true
+        %ul
+          - li_connections_for(k, places)

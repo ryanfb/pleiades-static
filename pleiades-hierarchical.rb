@@ -5,6 +5,40 @@ Encoding.default_internal = Encoding::UTF_8
 
 require 'csv'
 require 'json'
+require 'haml'
+
+def connections_to_array(id, places)
+  if places[id]["hasConnectionsWith"].nil?
+    return []
+  else
+    connections = places[id]["hasConnectionsWith"].split(',')
+    connections.reject!{|c| c =~ /[^0-9]/} # strip invalid places
+    connections.reject!{|c| places[c].nil?} # strip non-existent places
+    connections.reject!{|c| c == id}
+    return connections.uniq
+  end
+end
+
+module Haml::Helpers
+  def li_connections_for( id, places, walked_ids = [] )
+    unless walked_ids.include?(id)
+      walked_ids << id
+      haml_tag :li do
+        haml_tag :a, {href: "http://pleiades.stoa.org/places/#{id}"} do
+          haml_concat places[id]["title"]
+          haml_concat " - "
+          haml_concat id
+        end
+        haml_concat " (#{places[id]["children"]})" if places[id]["children"] > 0
+        connections_to_array(id, places).each do |child|
+          haml_tag :ul do
+            li_connections_for child, places, walked_ids
+          end
+        end
+      end
+    end
+  end
+end
 
 def walk_connections(id, places, depth = 0, walked_ids = [])
   unless depth > 100
@@ -13,19 +47,21 @@ def walk_connections(id, places, depth = 0, walked_ids = [])
       prefix_string += " "
     end
 
-    unless walked_ids.include?(id) || places[id].nil?
+    unless walked_ids.include?(id)
+      children = 0
       walked_ids << id
-      puts "#{prefix_string}#{id} - #{places[id]["title"]}"
-
-      unless places[id]["hasConnectionsWith"].nil?
-        connections = places[id]["hasConnectionsWith"].split(',')
-        connections.reject{|c| c =~ /[^0-9]/} # strip invalid places
-        connections.each do |connection|
-          walk_connections(connection, places, depth + 1, walked_ids)
-        end
+      connections = connections_to_array(id, places)
+      connections.each do |connection|
+        children += walk_connections(connection, places, depth + 1, walked_ids)
       end
+
+      puts "#{prefix_string}#{id} - #{places[id]["title"]} - #{children}"
+      places[id]["children"] = children.to_i
+      return children + 1
     end
   end
+
+  return 0
 end
 
 places_csv, names_csv, locations_csv = ARGV
@@ -79,4 +115,21 @@ $stderr.puts
 
 root_nodes.each do |id|
   walk_connections(id, places)
+  if places[id]["children"] > 0
+    places[id]["rootNode"] = true
+  end
 end
+
+puts
+
+template = IO.read(File.join('pleiades-hierarchical.haml'))
+haml_engine = Haml::Engine.new(template, :format => :html5)
+open('pleiades-hierarchical.html','w') {|file|
+  file.write(haml_engine.render(Object.new, :places => places))
+}
+
+# places.sort_by {|k,v| v["children"].nil? ? 0 : v["children"]}.reverse.to_h.each do |k,v|
+#   if root_nodes.include?(k)
+#     puts "#{k} - #{places[k]["title"]} - #{places[k]["children"]}"
+#   end
+# end
