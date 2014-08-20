@@ -15,14 +15,18 @@
       :width => '512',
       :frameborder => 0,
       :src => "https://render.githubusercontent.com/view/geojson?url=https://raw.githubusercontent.com/ryanfb/pleiades-geojson/master/geojson/#{place['id']}.geojson"}
-    - unless place['locations'].nil?
-      %h4 Locations
+    %h4 Locations
+    - if place['locations'].nil?
+      %i None
+    - else
       %ul
         - place['locations'].each do |location|
           %li
             %a{:href => "#{place['id']}/#{location['id']}.html"} #{location['title']}
-    - unless place['names'].nil?
-      %h4 Names
+    %h4 Names
+    - if place['names'].nil?
+      %i None
+    - else
       %ul
         - place['names'].each do |name|
           %li
@@ -30,12 +34,16 @@
     %h4 Place type:
     %p= place['featureTypes']
     %h4 Makes a connection with:
-    - unless place['connectsWith'].nil?
+    - if place['connectsWith'].nil?
+      %i None
+    - else
       - place['connectsWith'].split(',').each do |connection|
         - unless places[connection].nil?
           %a{:href => "#{connection}.html"} #{places[connection]['title']}
     %h4 Has a connection with:
-    - unless place['hasConnectionsWith'].nil?
+    - if place['hasConnectionsWith'].nil?
+      %i None
+    - else
       - place['hasConnectionsWith'].split(',').each do |connection|
         - unless places[connection].nil?
           %a{:href => "#{connection}.html"} #{places[connection]['title']}
