@@ -1,5 +1,5 @@
-Pleiades Hierarchical
-=====================
+Pleiades Static
+===============
 
 Code and data for generating static, browsable, hierarchical representations of [Pleiades](http://pleiades.stoa.org/) places.
 
