@@ -3,48 +3,73 @@
   %head
     %meta{:charset => 'utf-8'}
     %title #{place['title']} &mdash; Pleiades Static
+    %link{:rel => 'stylesheet', :href => 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css'}
   %body
-    %h1 #{place['title']}
-    %h4
-      %a{:href => "http://pleiades.stoa.org/places/#{place['id']}", :target => "_blank"} Open in Pleiades
-    %p Creators: #{place['creators']} &mdash; last modified #{place['modified']}
-    %p Contributors: #{place['authors']}
-    %p Copyright © The Creators, Contributors, Ancient World Mapping Center, and Institute for the Study of the Ancient World. Sharing and remixing permitted under terms of the Creative Commons Attribution 3.0 License (cc-by).
-    %h3 #{place['description']}
-    %iframe{:height => '512',
-      :width => '512',
-      :frameborder => 0,
-      :src => "https://render.githubusercontent.com/view/geojson?url=https://raw.githubusercontent.com/ryanfb/pleiades-geojson/master/geojson/#{place['id']}.geojson"}
-    %h4 Locations
-    - if place['locations'].nil?
-      %i None
-    - else
-      %ul
-        - place['locations'].each do |location|
-          %li
-            %a{:href => "#{place['id']}/#{location['id']}.html"} #{location['title']}
-    %h4 Names
-    - if place['names'].nil?
-      %i None
-    - else
-      %ul
-        - place['names'].each do |name|
-          %li
-            %a{:href => "#{place['id']}/#{name['id']}.html"} #{name['title']}
-    %h4 Place type:
-    %p= place['featureTypes']
-    %h4 Makes a connection with:
-    - if place['connectsWith'].nil?
-      %i None
-    - else
-      - place['connectsWith'].split(',').each do |connection|
-        - unless places[connection].nil?
-          %a{:href => "#{connection}.html"} #{places[connection]['title']}
-    %h4 Has a connection with:
-    - if place['hasConnectionsWith'].nil?
-      %i None
-    - else
-      - place['hasConnectionsWith'].split(',').each do |connection|
-        - unless places[connection].nil?
-          %a{:href => "#{connection}.html"} #{places[connection]['title']}
-    %p= place.inspect
+    .container
+      .row
+        .col-md-8
+          %h1
+            #{place['title']}
+        .col-md-4.text-right
+          %h1
+            %small
+              %a{:href => "http://pleiades.stoa.org/places/#{place['id']}", :target => "_blank"} Open in Pleiades
+      .row
+        .col-md-8
+          %small.text-info
+            %br
+            Creators: #{place['creators']} &mdash; last modified #{place['modified']}
+            %br
+            Contributors: #{place['authors']}
+            %br
+            Copyright © The Creators, Contributors, Ancient World Mapping Center, and Institute for the Study of the Ancient World.
+            %br
+            Sharing and remixing permitted under terms of the Creative Commons Attribution 3.0 License (cc-by).
+      .row
+        .col-md-12
+          %h3
+            #{place['description']}
+      .row
+        .col-md-8
+          %iframe{:height => '512',
+            :width => '100%',
+            :frameborder => 0,
+            :src => "https://render.githubusercontent.com/view/geojson?url=https://raw.githubusercontent.com/ryanfb/pleiades-geojson/master/geojson/#{place['id']}.geojson"}
+        .col-md-4
+          %h5 Locations
+          - if place['locations'].nil?
+            %i None
+          - else
+            %ul
+              - place['locations'].each do |location|
+                %li
+                  %a{:href => "#{place['id']}/#{location['id']}.html"} #{location['title']}
+          %h5 Names
+          - if place['names'].nil?
+            %i None
+          - else
+            %ul
+              - place['names'].each do |name|
+                %li
+                  %a{:href => "#{place['id']}/#{name['id']}.html"} #{name['title']}
+      .row
+        .col-md-8
+          %h5 Place type:
+          %p= place['featureTypes']
+          %h5 Makes a connection with:
+          - if place['connectsWith'].nil?
+            %i None
+          - else
+            - place['connectsWith'].split(',').each do |connection|
+              - unless places[connection].nil?
+                %a{:href => "#{connection}.html"} #{places[connection]['title']}
+          %h5 Has a connection with:
+          - if place['hasConnectionsWith'].nil?
+            %i None
+          - else
+            - place['hasConnectionsWith'].split(',').each do |connection|
+              - unless places[connection].nil?
+                %a{:href => "#{connection}.html"} #{places[connection]['title']}
+      %br
+      .row
+        / %pre= place.inspect
