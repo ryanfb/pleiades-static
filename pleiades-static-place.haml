@@ -60,16 +60,20 @@
           - if place['connectsWith'].nil?
             %i None
           - else
-            - place['connectsWith'].split(',').each do |connection|
-              - unless places[connection].nil?
-                %a{:href => "#{connection}.html"} #{places[connection]['title']}
+            %ul
+              - place['connectsWith'].split(',').each do |connection|
+                - unless places[connection].nil?
+                  %li
+                    %a{:href => "#{connection}.html"} #{places[connection]['title']}
           %h5 Has a connection with:
           - if place['hasConnectionsWith'].nil?
             %i None
           - else
-            - place['hasConnectionsWith'].split(',').each do |connection|
-              - unless places[connection].nil?
-                %a{:href => "#{connection}.html"} #{places[connection]['title']}
+            %ul
+              - place['hasConnectionsWith'].split(',').each do |connection|
+                - unless places[connection].nil?
+                  %li
+                    %a{:href => "#{connection}.html"} #{places[connection]['title']}
       %br
       .row
         / %pre= place.inspect
