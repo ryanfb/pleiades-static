@@ -7,6 +7,8 @@ TODO:
   * Hierarchy of connections (connectsWith parents, hasConnectionsWith children)
   * Geographical relationship hierarchy
   * Browse by [BAtlas Capgrid](http://atlantides.org/capgrids/)
+  * Browse by modern country containment
+  * Roman province containment?
 
 
 Data License
