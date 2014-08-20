@@ -5,15 +5,26 @@
     %title #{place['title']} &mdash; Pleiades Static
   %body
     %h1 #{place['title']}
-    %h2 #{place['description']}
     %h4
       %a{:href => "http://pleiades.stoa.org/places/#{place['id']}", :target => "_blank"} Open in Pleiades
-    %iframe{:height => '256',
-      :width => '256',
+    %p Creators: #{place['creators']} &mdash; last modified #{place['modified']}
+    %p Contributors: #{place['authors']}
+    %p Copyright © The Creators, Contributors, Ancient World Mapping Center, and Institute for the Study of the Ancient World. Sharing and remixing permitted under terms of the Creative Commons Attribution 3.0 License (cc-by).
+    %h3 #{place['description']}
+    %iframe{:height => '512',
+      :width => '512',
       :frameborder => 0,
       :src => "https://render.githubusercontent.com/view/geojson?url=https://raw.githubusercontent.com/ryanfb/pleiades-geojson/master/geojson/#{place['id']}.geojson"}
+    - unless place['locations'].nil?
+      %h4 Locations
+      %ul
+        - place['locations'].each do |location|
+          %li
+            %a{:href => "#{place['id']}/#{location['id']}.html"} #{location['title']}
     - unless place['names'].nil?
+      %h4 Names
       %ul
         - place['names'].each do |name|
-          %li= name
+          %li
+            %a{:href => "#{place['id']}/#{name['id']}.html"} #{name['title']}
     %p= place.inspect
