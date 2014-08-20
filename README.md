@@ -3,7 +3,15 @@ Pleiades Static
 
 Code and data for generating static, browsable, hierarchical representations of [Pleiades](http://pleiades.stoa.org/) places.
 
-TODO:
+Static HTML TODO:
+
+  * add landing page (index.html)
+  * add [Pleiades Static Search](https://github.com/ryanfb/pleiades-static-search) to top
+  * output full resources/dates for Locations and Names (links currently broken)
+  * load/display potential GeoNames associations from [Pleiades+](https://github.com/ryanfb/pleiades-plus)?
+
+Hierarchical Representations TODO:
+
   * Hierarchy of connections (connectsWith parents, hasConnectionsWith children)
   * Geographical relationship hierarchy
   * Browse by [BAtlas Capgrid](http://atlantides.org/capgrids/)
