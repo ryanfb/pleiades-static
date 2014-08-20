@@ -1,0 +1,19 @@
+!!! 5
+%html{:lang => 'en'}
+  %head
+    %meta{:charset => 'utf-8'}
+    %title #{place['title']} &mdash; Pleiades Static
+  %body
+    %h1 #{place['title']}
+    %h2 #{place['description']}
+    %h4
+      %a{:href => "http://pleiades.stoa.org/places/#{place['id']}", :target => "_blank"} Open in Pleiades
+    %iframe{:height => '256',
+      :width => '256',
+      :frameborder => 0,
+      :src => "https://render.githubusercontent.com/view/geojson?url=https://raw.githubusercontent.com/ryanfb/pleiades-geojson/master/geojson/#{place['id']}.geojson"}
+    - unless place['names'].nil?
+      %ul
+        - place['names'].each do |name|
+          %li= name
+    %p= place.inspect
