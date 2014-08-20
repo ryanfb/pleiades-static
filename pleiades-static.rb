@@ -9,11 +9,11 @@ require 'haml'
 
 places_csv, names_csv, locations_csv = ARGV
 
-def render_place(place)
+def render_place(place, places)
   template = IO.read(File.join('pleiades-static-place.haml'))
   $haml_engine ||= Haml::Engine.new(template, :format => :html5)
   open("places/#{place['id']}.html",'w') {|file|
-    file.write($haml_engine.render(Object.new, :place => place))
+    file.write($haml_engine.render(Object.new, :place => place, :places => places))
   }
 end
 
@@ -41,5 +41,5 @@ end
 
 $stderr.puts "Writing HTML output..."
 places.each_key do |id|
-  render_place(places[id])
+  render_place(places[id], places)
 end

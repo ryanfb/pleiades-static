@@ -27,4 +27,16 @@
         - place['names'].each do |name|
           %li
             %a{:href => "#{place['id']}/#{name['id']}.html"} #{name['title']}
+    %h4 Place type:
+    %p= place['featureTypes']
+    %h4 Makes a connection with:
+    - unless place['connectsWith'].nil?
+      - place['connectsWith'].split(',').each do |connection|
+        - unless places[connection].nil?
+          %a{:href => "#{connection}.html"} #{places[connection]['title']}
+    %h4 Has a connection with:
+    - unless place['hasConnectionsWith'].nil?
+      - place['hasConnectionsWith'].split(',').each do |connection|
+        - unless places[connection].nil?
+          %a{:href => "#{connection}.html"} #{places[connection]['title']}
     %p= place.inspect
