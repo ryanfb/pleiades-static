@@ -6,6 +6,7 @@ Encoding.default_internal = Encoding::UTF_8
 require 'csv'
 require 'json'
 require 'haml'
+require 'fileutils'
 
 places_csv, names_csv, locations_csv = ARGV
 
@@ -39,6 +40,7 @@ CSV.foreach(locations_csv, :headers => true) do |row|
   end
 end
 
+FileUtils::mkdir_p('places')
 $stderr.puts "Writing HTML output..."
 places.each_key do |id|
   render_place(places[id], places)
