@@ -3,9 +3,31 @@
   %head
     %meta{:charset => 'utf-8'}
     %title #{place['title']} &mdash; Pleiades Static
+    %script{:type => 'text/javascript', :src => 'https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'}
+    %script{:type => 'text/javascript', :src => 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'}
+    %script{:type => 'text/javascript', :src => 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'}
     %link{:rel => 'stylesheet', :href => 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css'}
+    %link{:rel => 'stylesheet', :href => 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css'}
+    %script{:type => 'text/javascript', :src => '/pleiades-static-search/pleiades-static-search.js'}
+    %style
+      div.unlocated iframe {opacity: 0.25;}
+    :javascript
+        window.pleiades_link = function(pleiades_id) {
+          var link;
+          link = $('<a>').attr('href', "/pleiades-static/places/" + pleiades_id + ".html");
+          link.attr('target', '_blank');
+          link.text(pleiades_id);
+          return link;
+        };
   %body
     .container
+      %br
+      .row
+        .col-md-4
+        .col-md-4.ui-widget
+          %input{:id => 'search', :class => 'form-control'}
+        .col-md-4
+      #results
       .row
         .col-md-8
           %h1
@@ -32,7 +54,7 @@
           %h3
             #{place['description']}
       .row
-        .col-md-8
+        .col-md-8{:class => place['featureTypes'] == 'unlocated' ? 'unlocated' : ''}
           %iframe{:height => '512',
             :width => '100%',
             :frameborder => 0,
