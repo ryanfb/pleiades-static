@@ -3,10 +3,36 @@
   <head>
     <meta charset='utf-8'>
     <title>Edistianenis Plebs &mdash; Pleiades Static</title>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js' type='text/javascript'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js' type='text/javascript'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js' type='text/javascript'></script>
     <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css' rel='stylesheet'>
+    <script src='/pleiades-static-search/pleiades-static-search.js' type='text/javascript'></script>
+    <style>
+      div.unlocated iframe {opacity: 0.25;}
+    </style>
+    <script>
+        window.pleiades_link = function(pleiades_id) {
+          var link;
+          link = $('<a>').attr('href', "/pleiades-static/places/" + pleiades_id + ".html");
+          link.attr('target', '_blank');
+          link.text(pleiades_id);
+          return link;
+        };
+    </script>
   </head>
   <body>
     <div class='container'>
+      <br>
+      <div class='row'>
+        <div class='col-md-4'></div>
+        <div class='col-md-4 ui-widget'>
+          <input class='form-control' id='search'>
+        </div>
+        <div class='col-md-4'></div>
+      </div>
+      <div id='results'></div>
       <div class='row'>
         <div class='col-md-8'>
           <h1>
@@ -45,7 +71,7 @@
         </div>
       </div>
       <div class='row'>
-        <div class='col-md-8'>
+        <div class='col-md-8 unlocated'>
           <iframe frameborder='0' height='512' src='https://render.githubusercontent.com/view/geojson?url=https://raw.githubusercontent.com/ryanfb/pleiades-geojson/master/geojson/329208.geojson' width='100%'></iframe>
         </div>
         <div class='col-md-4'>
