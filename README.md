@@ -5,8 +5,6 @@ Code and data for generating static, browsable, hierarchical representations of 
 
 Static HTML TODO:
 
-  * add landing page (index.html)
-  * add [Pleiades Static Search](https://github.com/ryanfb/pleiades-static-search) to top
   * output full resources/dates for Locations and Names (links currently broken)
   * load/display potential GeoNames associations from [Pleiades+](https://github.com/ryanfb/pleiades-plus)?
 
