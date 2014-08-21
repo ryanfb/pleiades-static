@@ -3,6 +3,8 @@ Pleiades Static
 
 Code and data for generating static, browsable, hierarchical representations of [Pleiades](http://pleiades.stoa.org/) places.
 
+Uses [Pleiades Static Search](https://github.com/ryanfb/pleiades-static-search/) for search.
+
 Static HTML TODO:
 
   * output full resources/dates for Locations and Names (links currently broken)
