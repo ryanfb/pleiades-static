@@ -9,6 +9,7 @@ Static HTML TODO:
 
   * output full resources/dates for Locations and Names (links currently broken)
   * load/display potential GeoNames associations from [Pleiades+](https://github.com/ryanfb/pleiades-plus)?
+  * link GeoJSON (and provide GitHub-based GeoJSON history?)
 
 Hierarchical Representations TODO:
 
