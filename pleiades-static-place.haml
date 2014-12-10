@@ -76,7 +76,10 @@
             %ul
               - place['names'].each do |name|
                 %li
-                  %a{:href => "#{place['id']}/#{name['id']}.html"} #{name['title']}
+                  %a{:href => "#{place['id']}/#{name['id']}.html"}
+                    #{name['nameAttested']}
+                    - if name['nameTransliterated'] != name['nameAttested']
+                      (#{name['nameTransliterated']})
       .row
         .col-md-8
           %h5 Place type:
