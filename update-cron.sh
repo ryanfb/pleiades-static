@@ -8,6 +8,7 @@ gunzip *.csv.gz
 git checkout gh-pages
 git pull
 git merge  -s recursive -Xtheirs --no-edit master
+bundle install
 bundle exec ./pleiades-static.rb pleiades-places-latest.csv pleiades-names-latest.csv pleiades-locations-latest.csv
 git add places
 git commit -m "$(date '+%Y-%m-%d') pleiades-static update"
