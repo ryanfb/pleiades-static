@@ -13,5 +13,5 @@ bundle exec ./pleiades-static.rb pleiades-places-latest.csv pleiades-names-lates
 git add places
 git commit -m "$(date '+%Y-%m-%d') pleiades-static update"
 git push
-rm *.csv *.csv.gz
+rm -fv *.csv *.csv.gz
 git checkout master
