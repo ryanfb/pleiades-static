@@ -13,3 +13,15 @@ Here's what I do on a Mac:
   * `ln -s ~/source/pleiades-static-search`
   * `ln -s ~/source/pleiades-geojson`
 * Make sure you're on the `gh-pages` branch and open up <http://pleiades.dev/pleiades-static/>
+
+### `pleiades-static.rb`
+
+Takes [Pleiades CSV dumps](http://atlantides.org/downloads/pleiades/dumps/) as arguments and generates static HTML representations in `places/`.
+
+### `pleiades-hierarchical.rb`
+
+Takes [Pleiades CSV dumps](http://atlantides.org/downloads/pleiades/dumps/) as arguments and generates hierarchical representaitons (output not currently used on "live" site).
+
+### `update-cron.sh`
+
+Downloads latest Pleiades CSV dump, runs `pleiades-static.rb`, and commits/pushes the result automatically.
