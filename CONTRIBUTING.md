@@ -20,7 +20,7 @@ Takes [Pleiades CSV dumps](http://atlantides.org/downloads/pleiades/dumps/) as a
 
 ### `pleiades-hierarchical.rb`
 
-Takes [Pleiades CSV dumps](http://atlantides.org/downloads/pleiades/dumps/) as arguments and generates hierarchical representaitons (output not currently used on "live" site).
+Takes [Pleiades CSV dumps](http://atlantides.org/downloads/pleiades/dumps/) as arguments and generates hierarchical representations (output not currently used on "live" site).
 
 ### `update-cron.sh`
 
