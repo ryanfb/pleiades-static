@@ -4,7 +4,7 @@
 declare -x SSH_AUTH_SOCK=$( find /tmp/com.apple.launchd.*/Listeners -user $(whoami) -type s | head -1 )
 
 wget http://atlantides.org/downloads/pleiades/dumps/pleiades-places-latest.csv.gz http://atlantides.org/downloads/pleiades/dumps/pleiades-locations-latest.csv.gz http://atlantides.org/downloads/pleiades/dumps/pleiades-names-latest.csv.gz
-gunzip *.csv.gz
+gunzip -f *.csv.gz
 git checkout gh-pages
 git pull
 git merge  -s recursive -Xtheirs --no-edit master
