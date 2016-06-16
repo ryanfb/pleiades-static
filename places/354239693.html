@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>So-called Caesareum of Cyrene &mdash; Pleiades Static</title>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js' type='text/javascript'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js' type='text/javascript'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js' type='text/javascript'></script>
+    <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css' rel='stylesheet'>
+    <script src='/pleiades-static-search/pleiades-static-search.js' type='text/javascript'></script>
+    <style>
+      div.unlocated iframe {opacity: 0.25;}
+    </style>
+    <script>
+        window.pleiades_link = function(pleiades_id) {
+          var link;
+          link = $('<a>').attr('href', "/pleiades-static/places/" + pleiades_id + ".html");
+          link.attr('target', '_blank');
+          link.text(pleiades_id);
+          return link;
+        };
+    </script>
+  </head>
+  <body>
+    <div class='container'>
+      <br>
+      <div class='row'>
+        <div class='col-md-3'></div>
+        <div class='col-md-6 ui-widget'>
+          <input class='form-control' id='search' placeholder='Enter a search term, Pleiades ID, or URL'>
+        </div>
+        <div class='col-md-3'></div>
+      </div>
+      <br>
+      <div id='results'></div>
+      <div class='row'>
+        <div class='col-md-9'>
+          <h1>
+            So-called Caesareum of Cyrene
+          </h1>
+        </div>
+        <div class='col-md-3'>
+          <h1>
+            <small>
+              <a href='http://pleiades.stoa.org/places/354239693' target='_blank'>Open in Pleiades</a>
+            </small>
+          </h1>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-8'>
+          <small class='text-info'>
+            <br>
+            Creators: vvitale &mdash; last modified 2016-06-14T19:45:27Z
+            <br>
+            Contributors: Vitale, V., J. Becker
+            <br>
+            Copyright © The Creators, Contributors, Ancient World Mapping Center, and Institute for the Study of the Ancient World.
+            <br>
+            Sharing and remixing permitted under terms of the
+            <a href='http://creativecommons.org/licenses/by/3.0/us/' rel='license'>Creative Commons Attribution 3.0 License (cc-by)</a>
+            .
+          </small>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-12'>
+          <h3>
+            A large architectural complex on the east side of the acropolis ridge in Cyrene that was probably built at the beginning of the first century AD and used as a gymnasium, but was later repurposed as forum in Flavian times, when the rooms north of the complex were levelled in order to build a large basilica. Various ruins can still be seen, including the podium of a temple in the central area, possibly dedicated to Dionysos. A fragmentary inscription referring to the "portico of Caesar", found over the inner side of the porch, made the place known as Caesareum.
+          </h3>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-8'>
+          <iframe frameborder='0' height='512' src='https://render.githubusercontent.com/view/geojson?url=https://raw.githubusercontent.com/ryanfb/pleiades-geojson/gh-pages/geojson/354239693.geojson' width='100%'></iframe>
+        </div>
+        <div class='col-md-4'>
+          <h5>Locations</h5>
+          <i>None</i>
+          <h5>Names</h5>
+          <i>None</i>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-8'>
+          <h5>Place type:</h5>
+          <p>basilica, architecturalcomplex</p>
+          <h5>Makes a connection with:</h5>
+          <ul>
+            <li>
+              <a href='373778.html'>Cyrene</a>
+            </li>
+          </ul>
+          <h5>Has a connection with:</h5>
+          <i>None</i>
+        </div>
+      </div>
+      <br>
+      <div class='row'>
+        <!-- %pre= place.inspect -->
+      </div>
+    </div>
+  </body>
+</html>
